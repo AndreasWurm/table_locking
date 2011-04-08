@@ -1,0 +1,8 @@
+This is a simple extension to ActiveRecord which allows to set table-level locks.
+
+
+  # locks the table in shared mode
+  User.lock
+
+  # lock the table in exclusive mode
+  User.lock :exclusive
