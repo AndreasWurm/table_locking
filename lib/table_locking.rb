@@ -16,9 +16,9 @@ module ActiveRecord
         valid_modes = ['ACCESS SHARE', 'ROW SHARE', 'ROW EXCLUSIVE', 'SHARE UPDATE EXCLUSIVE',
                      'SHARE', 'SHARE ROW EXCLUSIVE', 'EXCLUSIVE', 'ACCESS EXCLUSIVE']
 
-        lock_mode = lock_mode.to_str.upcase.gsub('_',' ')
+        lock_mode = lock_mode.to_s.upcase.gsub('_',' ')
 
-        raise ArgumentError.new "invalid lock mode #{lock_mode.inspect}" unless valid_modes.include? lock_mode
+        raise ArgumentError.new "invalid lock mode #{lock_mode}" unless valid_modes.include? lock_mode
         raise ArgumentError.new "not in a transaction" if open_transactions == 0
 
         execute "LOCK #{table_name} IN #{lock_mode} MODE"
