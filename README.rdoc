@@ -2,7 +2,7 @@ This is a simple extension to ActiveRecord which allows to set table-level locks
 
 
   # locks the users table in shared mode
-  User.lock
+  User.lock_table
 
   # locks the users table in exclusive mode
-  User.lock :exclusive
+  User.lock_table :exclusive

@@ -4,15 +4,15 @@ module ActiveRecord
     # This module enables table locking
     # http://www.postgresql.org/docs/9.0/static/explicit-locking.html
     module ClassMethods
-      def lock(lock_mode = 'SHARE')
-        connection.table_lock(table_name, lock_mode)
+      def lock_table(lock_mode = 'SHARE')
+        connection.lock_table(table_name, lock_mode)
       end
     end
   end
 
   module ConnectionAdapters
     module DatabaseStatements
-      def table_lock(table_name, lock_mode)
+      def lock_table(table_name, lock_mode)
         valid_modes = ['ACCESS SHARE', 'ROW SHARE', 'ROW EXCLUSIVE', 'SHARE UPDATE EXCLUSIVE',
                      'SHARE', 'SHARE ROW EXCLUSIVE', 'EXCLUSIVE', 'ACCESS EXCLUSIVE']
 
